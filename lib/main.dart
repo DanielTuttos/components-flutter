@@ -1,6 +1,7 @@
+import 'package:components/src/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
-import 'package:components/src/pages/home_temp.dart';
+// import 'package:components/src/pages/home_temp.dart';
 
 void main() => runApp(const MyApp());
 
@@ -12,7 +13,8 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Componentes APP',
-      home: HomePageTemp(),
+      // home: HomePageTemp(),
+      home: HomePage(),
     );
   }
 }
