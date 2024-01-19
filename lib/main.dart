@@ -1,4 +1,5 @@
-import 'package:components/src/pages/home_page.dart';
+import 'package:components/src/pages/alert_page.dart';
+import 'package:components/src/routes/routes.dart';
 import 'package:flutter/material.dart';
 
 // import 'package:components/src/pages/home_temp.dart';
@@ -10,11 +11,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Componentes APP',
       // home: HomePageTemp(),
-      home: HomePage(),
+      // home: HomePage(),
+      initialRoute: '/',
+      routes: getApplicationRoutes(),
+      onGenerateRoute: (RouteSettings settings) {
+        return MaterialPageRoute(
+            builder: (BuildContext context) => const AlertPage());
+      },
     );
   }
 }
