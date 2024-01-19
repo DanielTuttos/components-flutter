@@ -16,7 +16,34 @@ class CardPage extends StatelessWidget {
           const SizedBox(
             height: 30.0,
           ),
-          _cardType2()
+          _cardType2(),
+          const SizedBox(
+            height: 30.0,
+          ),
+          _cardType1(),
+          const SizedBox(
+            height: 30.0,
+          ),
+          _cardType2(),
+          const SizedBox(
+            height: 30.0,
+          ),
+          _cardType1(),
+          const SizedBox(
+            height: 30.0,
+          ),
+          _cardType2(),
+          const SizedBox(
+            height: 30.0,
+          ),
+          _cardType1(),
+          const SizedBox(
+            height: 30.0,
+          ),
+          _cardType2(),
+          const SizedBox(
+            height: 30.0,
+          ),
         ],
       ),
     );
@@ -24,6 +51,10 @@ class CardPage extends StatelessWidget {
 
   Widget _cardType1() {
     return Card(
+      color: Colors.white,
+      elevation: 10,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0)), // para los bordes
       child: Column(
         children: <Widget>[
           const ListTile(
@@ -49,6 +80,9 @@ class CardPage extends StatelessWidget {
 
   Widget _cardType2() {
     return Card(
+      color: Colors.white,
+      clipBehavior:
+          Clip.antiAlias, // evita que se salga en contenido de la tarjeta
       child: Column(
         children: <Widget>[
           const FadeInImage(
