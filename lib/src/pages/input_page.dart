@@ -12,7 +12,15 @@ class _InputPageState extends State<InputPage> {
   String _email = '';
   String _password = '';
   String _date = '';
-  TextEditingController _inputFieldDateController = new TextEditingController();
+  String _optionSelected = 'Volar';
+  final TextEditingController _inputFieldDateController =
+      TextEditingController();
+  final List<String> _powers = [
+    'Volar',
+    'Rayos X',
+    'Super Aliento',
+    'Super fuerza'
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,9 +36,11 @@ class _InputPageState extends State<InputPage> {
           const Divider(),
           _createPassword(),
           const Divider(),
-          _createDate(),
+          _createDate(context),
           const Divider(),
-          _createPerson()
+          _createDropdown(),
+          const Divider(),
+          _createPerson(),
         ],
       ),
     );
@@ -88,7 +98,7 @@ class _InputPageState extends State<InputPage> {
     );
   }
 
-  Widget _createDate() {
+  Widget _createDate(BuildContext context) {
     return TextField(
       enableInteractiveSelection: false,
       controller: _inputFieldDateController,
@@ -122,10 +132,44 @@ class _InputPageState extends State<InputPage> {
     }
   }
 
+  List<DropdownMenuItem<String>> getOptionsDropdown() {
+    List<DropdownMenuItem<String>> list = [];
+    _powers.forEach((power) {
+      list.add(DropdownMenuItem(
+        value: power,
+        child: Text(power),
+      ));
+    });
+    return list;
+  }
+
+  Widget _createDropdown() {
+    return Row(
+      children: <Widget>[
+        const Icon(Icons.select_all),
+        const SizedBox(
+          width: 30.0,
+        ),
+        Expanded(
+          child: DropdownButton(
+            value: _optionSelected,
+            items: getOptionsDropdown(),
+            onChanged: (opt) {
+              setState(() {
+                _optionSelected = opt!;
+              });
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget _createPerson() {
     return ListTile(
       title: Text('Nombre es: $_name'),
       subtitle: Text('Email: $_email'),
+      trailing: Text(_optionSelected),
     );
   }
 }
